@@ -19,7 +19,7 @@ def main():
 def rearrangeList():
 """ Randomly prints a each elemnt from the commend line arguments """
 
-    # storess the list of arguments passed into a new list
+    # storess the list of arguments passed into a new list, excluding the first elment(filename.py)
     list_of_argv =  sys.argv[1: len(sys.argv)]
     while len(list_of_argv) > 0:
 
