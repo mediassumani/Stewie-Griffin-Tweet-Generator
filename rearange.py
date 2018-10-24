@@ -9,7 +9,6 @@ $ python rearrange.py how now brown cow
 You should see output like this: brown cow now how
 
 """
-import random
 import sys
 
 def main():

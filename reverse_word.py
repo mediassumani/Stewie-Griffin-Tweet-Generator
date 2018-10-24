@@ -1,12 +1,12 @@
 import random
 import sys
 
-def reverse(str):
+def reverse(word):
  """ Reverses the passed argument of type string"""
 
-    count = len(str) - 1
+    count = len(word) - 1
     while count >= 0:
-        print(str[count])
+        print(word[count])
         count -= 1
 
 def main():
