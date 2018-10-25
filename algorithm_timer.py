@@ -1,4 +1,4 @@
-# Module contains a wrapper method that assess my algorithm performance
+# Module contains a wrapper method to benchmark my algorithm performance
 # Implemented by Medi A.
 
 import time
