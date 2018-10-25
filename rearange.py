@@ -16,12 +16,12 @@ from algorithm_timer import timing_function
 def rearrange_list():
 
     # stores the list of arguments passed into a new list, excluding the first elment(filename.py)
-    list_of_argv =  sys.argv[1: len(sys.argv)]
+    list_of_argv =  sys.argv[1:]
     result = []
     while len(list_of_argv) > 0:
 
         # Gets a random integer within range of 0 to the length of the list
-        random_index = random.randint(0, len(list_of_argv) - 1)
+        random_index = random.randint(len(list_of_argv) - 1)
         # Uses the list's pop method to randomly pop and print an element
         result.append(list_of_argv.pop(random_index))
 
