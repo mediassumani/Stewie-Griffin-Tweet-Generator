@@ -1,23 +1,24 @@
 import sys
-import os
 import random
+import linecache
 
 def main():
 
-    generateSentence(6)
+    print(generateSentence(6))
 
 def generateSentence(num_of_words):
-
-    file_path = '/usr/share/dict/words'
-    file_size = 0
+    count = 0
+    sentence = ""
     rand_index = random.randint(0, 235885)
     try:
-        with open(file_path, 'r') as text_file:
-            for line in text_file:
-                print(len(str(line)))
+        while count <= num_of_words:
+            sentence += linecache.getline("/usr/share/dict/words", rand_index)
+            count += 1
 
+    return sentence
     except IOError:
         print("Error Found : Unable to find file")
+
 
 if __name__ == "__main__":
     main()
