@@ -23,8 +23,6 @@ def tester():
     print(generateSentence(int(sys.argv[1])).replace("\n", " "))
 print(tester())
 
-def main():
-    tester()
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__tester__":
+    tester()
