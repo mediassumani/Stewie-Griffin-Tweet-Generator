@@ -5,12 +5,14 @@ from algorithm_timer import timing_function
 
 
 def generateSentence(num_words):
-    """ Grabs n random words from the text file"""
+    """ Returns n random words from the text file"""
     count = 0
     sentence = ""
+    total_words = 235885
+    random_line = "/usr/share/dict/words"
     try:
         while count < num_words:
-            sentence += linecache.getline("/usr/share/dict/words", randint(0, 235885))
+            sentence += linecache.getline(random_line, randint(0, total_words))
             count += 1
     except IOError:
         print("Error Found : Unable to find file")
