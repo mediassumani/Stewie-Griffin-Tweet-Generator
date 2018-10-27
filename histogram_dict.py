@@ -15,12 +15,13 @@ def histogram(source_text):
                 for word in split_sentence:
                     histogram[word] = 1
 
-
         file.close()
-        return histogram
+        print(frequency("two", histogram))
+
     except IOError:
         print("Error Found while opening the file")
 
+    return histogram
 
 
 
@@ -31,12 +32,17 @@ def unique_words(histogram):
 
 def frequency(word, histogram):
     """ returns the number of times that word appears in a text"""
-    return
+    frequency_count = 0
+    for key,value in histogram.items():
+        if word.lower() is key or word.capitalize() is key :
+            frequency_count += 1
+    return frequency_count
 
 def main():
 
     text_file = "source_text.txt"
     print(histogram(text_file))
+
 
 
 if __name__ == "__main__":
