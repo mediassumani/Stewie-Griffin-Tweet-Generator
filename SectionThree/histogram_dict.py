@@ -1,6 +1,4 @@
-import os
-import sys
-
+""" Modules contains functions to process an histogram of dictionary"""
 
 
 def histogram(source_text):
@@ -14,15 +12,12 @@ def histogram(source_text):
                 split_sentence += line.split()
                 for word in split_sentence:
                     histogram[word] = frequency(word, split_sentence)
-
         file.close()
 
     except IOError:
         print("Error Found while opening the file")
 
     return histogram
-
-
 
 def unique_words(histogram):
     """ returns the total count of unique words in the histogram"""
@@ -48,7 +43,6 @@ def frequency(word, text):
     return frequency_count
 
 def main():
-
     text_file = "source_text.txt"
     print(histogram(text_file))
 
