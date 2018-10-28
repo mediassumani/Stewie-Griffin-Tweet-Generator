@@ -11,6 +11,7 @@ def histogram(source_text):
                 for word in split_sentence:
                     histogram.append((word, frequency(word, split_sentence)))
 
+        file.close()
     except IOError:
         print("Errror Found while opening file")
 
@@ -18,8 +19,6 @@ def histogram(source_text):
 
 
 def unique_words(histogram):
-    return
-
 
 
 def main():
