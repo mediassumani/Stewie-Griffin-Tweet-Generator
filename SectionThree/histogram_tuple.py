@@ -34,7 +34,6 @@ def unique_words(tuple_histogram):
 
     return unique_words_count
 
-
 def main():
     text_file = "source_text.txt"
     #print(histogram(text_file))
