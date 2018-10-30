@@ -36,9 +36,9 @@ def unique_words(tuple_histogram):
 
 def main():
     text_file = "source_text.txt"
-    #print(histogram(text_file))
-    list = [('one', 1), ('fish', 4), ('two', 1), ('fish', 4), ('red', 1), ('fish', 4), ('blue', 1), ('fish', 4)]
-    print(unique_words(list))
+    print(histogram(text_file))
+    #list = [('one', 1), ('fish', 4), ('two', 1), ('fish', 4), ('red', 1), ('fish', 4), ('blue', 1), ('fish', 4)]
+
 
 
 if __name__ == "__main__":
