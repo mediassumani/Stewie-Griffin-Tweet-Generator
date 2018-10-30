@@ -13,13 +13,22 @@ def histogram(source_text):
     try:
         with open(source_text, "r") as file:
             for line in file:
-                print(line.split())
+                if line == "":
+                    pass
+                else:
+                    split_sentence += line.split()
+                    for word in split_sentence:
+                        temp_word = word.replace(".","")
+                        dict_histogram[temp_word.replace(",","")] = frequency(temp_word.replace(",",""), split_sentence)
 
+        # print(dict_histogram)
         file.close()
     except IOError:
         print("Error Found while opening the file")
-    print("There are {} unique words in this histogram".format(unique_words(dict_histogram)))
+    print("\nThere are {} unique words in this histogram\n".format(unique_words(dict_histogram)))
     return dict_histogram
+
+
 
 def unique_words(histogram):
     """ returns the total count of unique words in the histogram"""
@@ -35,7 +44,8 @@ def frequency(word, text):
     """ returns the number of times that word appears in a text"""
     frequency_count = 0
     for str in text:
-        if word == str.lower() or word == str.upper() or word == str+".":
+        temp_str = str.replace(".","")
+        if word == temp_str.replace(",","").lower() or word == temp_str.replace(",","").upper():
             frequency_count += 1
 
     return frequency_count
