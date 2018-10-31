@@ -9,7 +9,6 @@ def sample_by_frequency(histogram):
 
     # This list will contain the duplicated words
     duplicated_list = []
-
     for list in histogram:
         # get the current list
         current_list = list
@@ -24,7 +23,10 @@ def sample_by_frequency(histogram):
 
 def main():
 
+    count = 0
     histogram = [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]
-    print(sample_by_frequency(histogram))
+    while count < 10:
+        print(sample_by_frequency(histogram))
+        count += 1
 if __name__== "__main__":
     main()
