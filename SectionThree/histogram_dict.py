@@ -37,8 +37,7 @@ def tester():
     with open("source_text.txt") as text_file:
         words = text_file.read().replace("\n", "").lower().split()
     created_histogram = histogram(words)
-    print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words\n".format(created_histogram, unique_words(created_histogram)))
-    print("The word fish is spotted {} times.".format(frequency("fish", created_histogram)))
+    print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words".format(created_histogram, unique_words(created_histogram)))
 
 
 print(tester())
