@@ -1,4 +1,5 @@
 """ Modules contains functions to process an histogram of dictionary"""
+
 config_file = '/Users/mediassumani/Documents/dev/cs/Courses/CS1.2/algorithm_timer.py'
 import sys
 import os
@@ -6,55 +7,40 @@ sys.path.append(os.path.dirname(config_file))
 from algorithm_timer import timing_function
 
 def histogram(source_text):
-    """ returns a histogram that stores each unique word with the number of times it appears in the source text"""
-
-    split_sentence = []
+    "returns a histogram data structure that stores each unique word along with the number of times the word appears in the text"
     dict_histogram = {}
-    try:
-        with open(source_text, "r") as file:
-            for line in file:
-                if line == "":
-                    pass
-                else:
-                    split_sentence += line.split()
-                    for word in split_sentence:
-                        temp_word = word.replace(".","")
-                        dict_histogram[temp_word.replace(",","")] = frequency(temp_word.replace(",",""), split_sentence)
+    for word in source_text:
+        # if the word is already in the dict, we increment its freqeuncy, else add 1 freq.
+        if word in dict_histogram:
+            dict_histogram[word] += 1
+        else:
+            dict_histogram[word] = 1
 
-        # print(dict_histogram)
-        file.close()
-    except IOError:
-        print("Error Found while opening the file")
-    print("\nThere are {} unique words in this histogram\n".format(unique_words(dict_histogram)))
     return dict_histogram
-
 
 
 def unique_words(histogram):
     """ returns the total count of unique words in the histogram"""
+    return len(histogram)
 
-    unique_words_count = 0
-    for key,value in histogram.items():
-        if value == 1:
-            unique_words_count += 1
-
-    return unique_words_count
-
-def frequency(word, text):
+def frequency(word, histogram):
     """ returns the number of times that word appears in a text"""
-    frequency_count = 0
-    for str in text:
-        temp_str = str.replace(".","")
-        if word == temp_str.replace(",","").lower() or word == temp_str.replace(",","").upper():
-            frequency_count += 1
-
-    return frequency_count
-
+    for key,value in histogram.items():
+        if key == word:
+            return value
+        else:
+            return "The word {} is not found".format(word)
 
 @timing_function
 def tester():
-    text_file = "source_text.txt"
-    print(histogram(text_file))
+
+    with open("source_text.txt") as text_file:
+        words = text_file.read().replace("\n", "").lower().split()
+    created_histogram = histogram(words)
+    print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words\n".format(created_histogram, unique_words(created_histogram)))
+    print("The word fish is spotted {} times.".format(frequency("fish", created_histogram)))
+
+
 print(tester())
 
 
