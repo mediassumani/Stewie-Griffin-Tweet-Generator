@@ -7,7 +7,7 @@ sys.path.append(os.path.dirname(config_file))
 from algorithm_timer import timing_function
 
 def histogram(source_text):
-    "returns a histogram data structure that stores each unique word along with the number of times the word appears in the text"
+    "returns a dictionary histogram data structure that stores each unique word along with the number of times the word appears in the text"
     dict_histogram = {}
     for word in source_text:
         # if the word is already in the dict, we increment its freqeuncy, else add 1 freq.
@@ -17,7 +17,6 @@ def histogram(source_text):
             dict_histogram[word] = 1
 
     return dict_histogram
-
 
 def unique_words(histogram):
     """ returns the total count of unique words in the histogram"""
@@ -33,15 +32,11 @@ def frequency(word, histogram):
 
 @timing_function
 def tester():
-
     with open("source_text.txt") as text_file:
         words = text_file.read().replace("\n", "").lower().split()
     created_histogram = histogram(words)
     print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words".format(created_histogram, unique_words(created_histogram)))
-
-
 print(tester())
-
 
 if __name__ == "__tester__":
     tester()
