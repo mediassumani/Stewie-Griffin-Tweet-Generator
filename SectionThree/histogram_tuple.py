@@ -16,17 +16,21 @@ def histogram(source_text):
     return tuple_histogram
 
 def frequency(word, histogram):
-    return 1
+    for tuple in histogram:
+        if tuple[0] == word:
+            return tuple[1]
+    return "{} Not found".format(word)
 
 def unique_words(tuple_histogram):
-    pass
+    return len(tuple_histogram)
 
 def main():
-
     with open("source_text.txt") as text_file:
         words = text_file.read().replace("\n", "").lower().split()
     created_histogram = histogram(words)
-    print(created_histogram)
+    print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words".format(created_histogram, unique_words(created_histogram)))
+    print("The word fish appears {} times in the histogram".format(frequency("fish",created_histogram)))
+
 
 
 
