@@ -1,3 +1,5 @@
+""" Modules contains functions to process an histogram of list"""
+from algorithm_timer import timing_function
 def histogram(source_text):
     "returns a dictionary histogram data structure that stores each unique word along with the number of times the word appears in the text"
     list_histogram = []
