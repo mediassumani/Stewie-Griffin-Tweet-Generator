@@ -24,9 +24,9 @@ def sample_by_frequency(histogram):
 def main():
 
     count = 0
-    histogram = [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]
+    histogram_list = [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]
     while count < 10:
-        print(sample_by_frequency(histogram))
+        print(sample_by_frequency(histogram_list))
         count += 1
 if __name__== "__main__":
     main()
