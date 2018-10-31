@@ -3,9 +3,9 @@ def histogram(source_text):
     list_histogram = []
     for word in source_text:
         found_word = False
-        for histogram in list_histogram:
-            if word == histogram[0]:
-                histogram[1] = histogram[1] + 1
+        for list in list_histogram:
+            if word == list[0]:
+                list[1] = list[1] + 1
                 found_word = True
                 break
         if not found_word:
