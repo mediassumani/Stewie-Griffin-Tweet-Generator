@@ -1,9 +1,19 @@
 """ Modules contains functions to process an histogram of tuple"""
 from algorithm_timer import timing_function
 
-
 def save_histogram_in_file(histogram):
-    with open
+
+    try:
+
+        with open("saved_histogram.txt", "w") as file:
+            file.write("[ ")
+            for tuple in histogram:
+                file.write("( {}".format(tuple[0]))
+                file.write(" : ")
+                file.write("{} ),".format(str(tuple[1])))
+            file.write(" ]")
+    except IOError:
+        print("Error Found : Unable to write on file")
 
 
 def histogram(source_text):
@@ -36,7 +46,8 @@ def tester():
     with open("source_text.txt") as text_file:
         words = text_file.read().replace("\n", "").lower().split()
     created_histogram = histogram(words)
-    print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words".format(created_histogram, unique_words(created_histogram)))
+    #print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words".format(created_histogram, unique_words(created_histogram)))
+    save_histogram_in_file(created_histogram)
 print(tester())
 
 if __name__ == "__tester__":
