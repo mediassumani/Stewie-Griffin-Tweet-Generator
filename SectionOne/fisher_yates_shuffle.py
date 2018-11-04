@@ -1,30 +1,28 @@
 """  This module implements Fisher-Yates Shuffle algorithm """
 
 import random
-
-
-def has_been_shuffled(card, deck):
-    """ This function checks """
-    return card in deck
+from algorithm_timer import timing_function
 
 def shuffle(deck):
     """ This function shuffles a deck of card"""
-
     shuffled_deck = []
-    for card in deck:
+    count = len(deck)
+
+    while(count):
         random_index = random.randint(0, len(deck)-1)
-        if (has_been_shuffled(card,shuffled_deck) == False):
+        if deck[random_index] not in shuffled_deck:
             shuffled_deck.append(deck[random_index])
+            count -= 1
+    return shuffled_deck
 
-        return shuffled_deck
+@timing_function
+def tester():
 
-
-def main():
     unshuffled_deck = ["Ace","King","Queen","Joker","Diamonds","Hearts","Spades"]
-
     print("\n\t\tFisher Yates Shuffle Algorithm\n")
     print("Before Shuffle : {}\n".format(unshuffled_deck))
     print("After Shuffle : {}\n".format(shuffle(unshuffled_deck)))
+print(tester())
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__tester__":
+    tester()
