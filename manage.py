@@ -6,7 +6,7 @@
 #
 # # Initialize Flask Migrate
 # #migrate = Migrate(app, db)
-# 
+#
 # # Add the flask migrate
 # #manager.add_command('db', MigrateCommand)
 #

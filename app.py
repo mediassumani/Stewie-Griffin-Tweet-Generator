@@ -1,5 +1,5 @@
 from flask import Flask
-from manage import Manage
+#from manage import Manage
 #from dictionary_words import generateSentence
 app = Flask(__name__)
 
