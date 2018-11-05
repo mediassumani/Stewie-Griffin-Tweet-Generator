@@ -1,7 +1,6 @@
 import sys
 import linecache
 from random import randint
-from algorithm_timer import timing_function
 
 
 def generateSentence(num_words):
@@ -20,10 +19,8 @@ def generateSentence(num_words):
     return sentence
 
 
-@timing_function
 def tester():
-    print(generateSentence(int(sys.argv[1])).replace("\n", " "))
-print(tester())
+    print(generateSentence(5)
 
 
 if __name__ == "__tester__":
