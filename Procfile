@@ -1,1 +1,1 @@
-web: gunicorn meditweetygen.wsgi --log-file -
+web: gunicorn app
