@@ -1,3 +1,5 @@
+"""Optimized to grab wp"""
+
 import sys
 import linecache
 from random import randint
@@ -17,11 +19,3 @@ def generateSentence(num_words):
         print("Error Found : Unable to find file")
 
     return sentence
-
-
-def tester():
-    print(generateSentence(5)
-
-
-if __name__ == "__tester__":
-    tester()
