@@ -8,7 +8,6 @@ def sample_by_frequency(histogram):
         total_tokens += list[1]
 
     random_integer = random.randint(1,total_tokens)
-
     for list in histogram:
         accumulator += list[1]
         if accumulator >= random_integer:
