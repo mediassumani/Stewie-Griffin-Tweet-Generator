@@ -2,10 +2,9 @@
 from algorithm_timer import timing_function
 
 def histogram(source_text):
-    """returns a dictionary histogram data structure that stores each unique word along with the number of times the word appears in the text
+    """Returns a dictionary histogram data structure that stores each unique word with its frequency
     @param:
         - source_text : the corpus to create the histogram from
-
     @return
         - list_histogram : The created histogram
     """
@@ -25,7 +24,7 @@ def histogram(source_text):
     return list_histogram
 
 def frequency(word, histogram):
-    """ returns the number of times that word appears in a text"""
+    """ Returns the number of times that word appears in a text"""
     for list in histogram:
         # if word is seen, returns its frequency
         if array[0] == word:
@@ -34,7 +33,7 @@ def frequency(word, histogram):
     return 0 # returns zero if the word is not in histogram
 
 def unique_words(tuple_histogram):
-    """ returns the total count of unique words in the histogram"""
+    """ Returns the total count of unique words in the histogram"""
     return len(tuple_histogram)
 
 def main():

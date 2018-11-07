@@ -2,32 +2,40 @@
 from algorithm_timer import timing_function
 
 def save_histogram_in_file(histogram):
+""" saves the histogram on a text file"""
 
     try:
-
-        with open("saved_histogram.txt", "w") as file:
-            file.write("[ ")
+        with open("saved_histogram.txt", "w") as text_file:
+            text_file.write("[ ")
             for tuple in histogram:
-                file.write("( {}".format(tuple[0]))
-                file.write(" : ")
-                file.write("{} ),".format(str(tuple[1])))
-            file.write(" ]")
+                text_file.write("( {}".format(tuple[0]))
+                text_file.write(" : ")
+                text_file.write("{} ),".format(str(tuple[1])))
+            text_file.write(" ]")
     except IOError:
         print("Error Found : Unable to write on file")
 
 
 def histogram(source_text):
+        """Returns a tuple histogram data structure that stores each unique word along with its frequecy
+        @param:
+            - source_text : the corpus to create the histogram from
+        @return
+            - tuple_histogram : The created histogram
+        """
     tuple_histogram = []
     for word in source_text:
         found_word = False
         for index, tuple in enumerate(tuple_histogram):
             if word == tuple[0]:
-                temp_tuple = (word,tuple[1] + 1)
-                temp_tuple , tuple = tuple, temp_tuple
-                tuple_histogram[index] = tuple
+                temp_tuple = (word,tuple[1] + 1) # gets the current tuple and increases its frqeuncy by one
+                temp_tuple , tuple = tuple, temp_tuple # swaps the current tuple with the temp tuple with the updated freqeuncy
+                tuple_histogram[index] = tuple # replaces the old tuple with the updated one at that index
                 found_word = True
         if not found_word:
+            # increases the frequency if it's its first apperence
             tuple_histogram.append((word,1))
+            
     return tuple_histogram
 
 def frequency(word, histogram):
