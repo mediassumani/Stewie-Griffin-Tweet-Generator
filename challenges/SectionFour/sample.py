@@ -23,6 +23,7 @@ def sample_by_frequency(histogram):
 def main():
 
     histogram_list = [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]
+    print(sample_by_frequency(histogram_list))
 
 if __name__== "__main__":
     main()
