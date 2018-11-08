@@ -1,7 +1,7 @@
 #!python
 
 import unittest, sys
-sys.path.insert(0, '../')
+sys.path.insert(0, '../scripts')
 from listogram import Listogram
 
 # Python 2 and 3 compatibility: unittest module renamed this assertion method
