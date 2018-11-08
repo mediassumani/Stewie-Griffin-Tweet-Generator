@@ -52,6 +52,10 @@ class Listogram(list):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
         # TODO: Implement linear search to find index of entry with target word
+        for index, list in enumerate(self):
+            if list[0] == target:
+                return index
+        return None
 
 
 def print_histogram(word_list):
