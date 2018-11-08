@@ -1,9 +1,9 @@
 """ Modules contains functions to process an histogram of tuple"""
+
 from algorithm_timer import timing_function
 
 def save_histogram_in_file(histogram):
-""" saves the histogram on a text file"""
-
+    """ saves the histogram on a text file """
     try:
         with open("saved_histogram.txt", "w") as text_file:
             text_file.write("[ ")
@@ -17,7 +17,7 @@ def save_histogram_in_file(histogram):
 
 
 def histogram(source_text):
-        """Returns a tuple histogram data structure that stores each unique word along with its frequecy
+    """Returns a tuple histogram data structure that stores each unique word along with its frequecy
         @param:
             - source_text : the corpus to create the histogram from
         @return
@@ -35,7 +35,7 @@ def histogram(source_text):
         if not found_word:
             # increases the frequency if it's its first apperence
             tuple_histogram.append((word,1))
-            
+
     return tuple_histogram
 
 def frequency(word, histogram):
@@ -43,7 +43,7 @@ def frequency(word, histogram):
     for tuple in histogram:
         if tuple[0] == word:
             return tuple[1]
-    return "{} Not found".format(word)
+    return 0
 
 def unique_words(tuple_histogram):
     """ returns the total count of unique words in the histogram"""
@@ -51,11 +51,13 @@ def unique_words(tuple_histogram):
 
 @timing_function
 def tester():
+
+    # Testing the methods above
     with open("source_text.txt") as text_file:
         words = text_file.read().replace("\n", "").lower().split()
     created_histogram = histogram(words)
-    #print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words".format(created_histogram, unique_words(created_histogram)))
-    save_histogram_in_file(created_histogram)
+    print("\n\n\t\t **** HISTOGRAM DATA *** \n\n{}\n\nThere are {} unique words".format(created_histogram, unique_words(created_histogram)))
+
 print(tester())
 
 if __name__ == "__tester__":

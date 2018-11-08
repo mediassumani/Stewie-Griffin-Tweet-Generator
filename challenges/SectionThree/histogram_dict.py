@@ -1,17 +1,14 @@
 """ Modules contains functions to process an histogram of dictionary"""
 
-config_file = '/Users/mediassumani/Documents/dev/cs/Courses/CS1.2/algorithm_timer.py'
-import sys
-import os
-sys.path.append(os.path.dirname(config_file))
 from algorithm_timer import timing_function
 
 def histogram(source_text):
-    "returns a dictionary histogram data structure that stores each unique word along with the number of times the word appears in the text"
+    "Returns a dictionary histogram data structure that stores each unique word along with its freqeuncy"
     dict_histogram = {}
     for word in source_text:
-        # if the word is already in the dict, we increment its freqeuncy, else add 1 freq.
+        # if the word is already in the dict, we increment its freqeuncy
         if word in dict_histogram:
+            #Increments its freqeuncy,
             dict_histogram[word] += 1
         else:
             dict_histogram[word] = 1

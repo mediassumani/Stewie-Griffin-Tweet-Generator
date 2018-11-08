@@ -1,13 +1,14 @@
 """ Modules contains functions to process an histogram of list"""
+
 from algorithm_timer import timing_function
 
 def histogram(source_text):
     """Returns a dictionary histogram data structure that stores each unique word with its frequency
-    @param:
-        - source_text : the corpus to create the histogram from
-    @return
-        - list_histogram : The created histogram
-    """
+        @param:
+            - source_text : the corpus to create the histogram from
+        @return
+            - list_histogram : The created histogram
+        """
     list_histogram = []
     for word in source_text:
         found_word = False
