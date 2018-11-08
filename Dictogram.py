@@ -1,7 +1,7 @@
 #!python
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
-
+import sys
 
 class Dictogram(dict):
     """Dictogram is a histogram implemented as a subclass of the dict type."""
@@ -20,6 +20,14 @@ class Dictogram(dict):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
+        if word in self:
+            self[word] += count
+            self.tokens += count
+        else:
+            self[word] = count
+            self.tokens += count
+            self.types += 1
+
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
@@ -30,6 +38,7 @@ class Dictogram(dict):
 
 
 def print_histogram(word_list):
+    """ Prints the histogram for visual testing"""
     print('word list: {}'.format(word_list))
     # Create a dictogram and display its contents
     histogram = Dictogram(word_list)
@@ -42,7 +51,6 @@ def print_histogram(word_list):
 
 
 def main():
-    import sys
     arguments = sys.argv[1:]  # Exclude script name in first argument
     if len(arguments) >= 1:
         # Test histogram on given arguments
