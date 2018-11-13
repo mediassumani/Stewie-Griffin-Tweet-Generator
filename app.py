@@ -12,10 +12,11 @@ sys.path.insert(0,'./scripts')
 from file_opener import read_file
 
 app = Flask(__name__)
-file_path = 'stewi_griffin_scripts.txt'
-text_body = read_file(file_path)
 
-# Home Route
+# Route : Index
 @app.route('/')
 def index():
-    return "Hello Medi"
+    file_path = 'stewi_griffin_scripts.txt'
+    text = read_file(file_path)
+
+    return text
