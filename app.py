@@ -10,6 +10,8 @@ from flask import Flask
 import sys
 sys.path.insert(0,'./scripts')
 from file_opener import read_file
+from histogram_generator import generate_histogram
+from sentence import generate_sentence
 
 app = Flask(__name__)
 
@@ -18,5 +20,6 @@ app = Flask(__name__)
 def index():
     file_path = 'stewi_griffin_scripts.txt'
     text = read_file(file_path)
+    histogram = generate_histogram(text)
 
-    return text
+    return generate_sentence(histogram, 15)
