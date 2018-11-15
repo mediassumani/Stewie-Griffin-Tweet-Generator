@@ -1,4 +1,3 @@
-
 """
 FILENAME:               app.py
 AUTHOR:                 Medi Assumani
@@ -18,8 +17,32 @@ app = Flask(__name__)
 # Route : Index
 @app.route('/')
 def index():
-    file_path = 'stewi_griffin_scripts.txt'
-    text = read_file(file_path)
-    histogram = generate_histogram(text)
+    # file_path = 'stewi_griffin_scripts.txt'
+    # text = read_file(file_path)
+    # histogram = generate_histogram(text)
+    #
+    # return generate_sentence(histogram, 10)
+    return "I am amazing!"
 
-    return generate_sentence(histogram, 15)
+dict_of_dict = {}
+
+text_list = read_file("fish.txt")
+histogram = generate_histogram(text_list)
+
+
+for key,value in histogram.items():
+    temp_value = []
+    if key not in dict_of_dict:
+        temp_key = key
+
+        # for index, word in enumerate(text_list):
+        for i in range(0, len(text_list)-1):
+            if text_list[i] == temp_key:
+                temp_value.append(text_list[i + 1])
+
+            # if text_list[i+1] is not None:
+            #     temp_value.append(text_list[i+1])
+                # dict_of_dict[key] += temp_value
+
+    dict_of_dict[key] = temp_value
+print(dict_of_dict)
