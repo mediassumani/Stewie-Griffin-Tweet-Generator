@@ -59,7 +59,6 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
         counter = 0
-        current_node = self.head
         for item in self.items():
             counter += 1
         return counter
