@@ -98,27 +98,32 @@ class DoublyLinkedList(object):
             self.head = new_node
             self.counter += 1
 
-    #This function deletes the head Node from the list
-    def deleteHead(self):
-        """ Delete the head of the doubly linked list
-        TODO: Running time: O(???) Why and under what conditions?
-        """
-
-        if self.is_empty():
-            raise ValueError("List is empty")
-
-        current_node = self.head
-        while current_node is not None:
-            
-
-    def deleteTail(self):
-        pass
-
-
     def delete(self, data):
-        """Delete the given item from this linked list, or raise ValueError.
+        """Delete the given item from this doubly linked list, or raise ValueError.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
+            # checks if the list is empty
+            if self.is_empty():
+                raise ValueError("Empty List")
 
+            # check if item is in head
+            if self.head.data == item:
+                self.head = self.head.next
+                #checks if the head and tail point to same object(ll with one item)
+                if self.tail.data == item:
+                    self.tail = None
+                self.counter -= 1
+                return
 
-        print "The data is not found in the List"
+                current_node = self.head
+                while current_node is not None:
+                    current_node.prev.next = current_node.next
+                    self.counter -= 1
+
+                    #checks if deleted node was the tail
+                    if self.tail.data == item:
+                        #updates the tail
+                        self.tail = current_node
+                    return
+                current_node = current_node.next
+            raise ValueError('Item not found: {}'.format(item))
