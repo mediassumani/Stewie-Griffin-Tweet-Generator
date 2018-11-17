@@ -69,7 +69,8 @@ class DoublyLinkedList(object):
 
     # This function replaces a data from the list with a new one
     def replace(self, old_item, new_item):
-        pass
+        
+        current_node = self.head
 
 
     def append(self, data):
