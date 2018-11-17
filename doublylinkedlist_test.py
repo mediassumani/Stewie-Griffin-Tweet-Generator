@@ -1,130 +1,85 @@
-#!python
-# The node class
-class Node(object):
 
-    def __init__(self,data):
-        self.data = data
-        self.next = None
-        self.prev = None
+from doublylinkedlist import DoublyLinkedList, Node
+import unittest
 
-# The doubly linked list class
-class DoublyLinkedList(object):
+class NodeTest(unittest.TestCase):
 
-    def __init__(self):
-        self.head = None
-        self.tail = None
-        self.counter = 0
+    def test_init(self):
+        data = 'ABC'
+        node = Node(data)
+        # Initializer should add instance properties
+        assert node.data is data
+        assert node.next is None
 
-    def __str__(self):
-        """Return a formatted string representation of this doubly linked list."""
-        items = ['({!r})'.format(item) for item in self.items()]
-        return '[{}]'.format(' -> '.join(items))
+class TestDoublyLinkedList(unittest.TestCase):
 
-    def __repr__(self):
-        """Return a string representation of this linked list."""
-        return 'DoublyLinkedList({!r})'.format(self.items())
-
-    def items(self):
-        """Return a list (dynamic array) of all items in this linked list.
-        Best and worst case running time: O(n) for n items in the list (length)
-        because we always need to loop through all n nodes to get each item."""
-
-        items = []
-        current_node = self.head
-        while current_node is not None:
-            self.counter += 1
-            items.append(current_node.data)
-            current_node = current_node.next
-
-        return items
-
-    # Getter methods
-    def getHead(self):
-        return self.head
-
-    def getTail(self):
-        return self.tail
-
-    # function that retruns a boolean value if the list is empty or not
-    def isEmpty(self):
-        return self.head is None
-
-    def length(self):
-        counter = 0
-        for item in self.items():
-            counter += 1
-        return counter
-
-    def length_with_counter(self):
-        return self.counter
-
-    # This functions retruns a boolean on wheter or not the data is found in the list
-    def find(self, quality):
-
-        current_node = self.head
-        while current_node is not None:
-            if quality(current_node.data) is True:
-                return current_node.data
-            current_node = current_node.next
-
-    # This function replaces a data from the list with a new one
-    def replace(self, old_item, new_item):
-        
-        current_node = self.head
+    def test_init(self):
+        dll = DoublyLinkedList()
+        assert dll.head is None
+        assert dll.tail is None
 
 
-    def append(self, data):
-        """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        new_node = Node()
-        if self.isEmpty():
-            self.head = new_node
-            self.tail = new_item
-            self.counter += 1
-        else:
-            self.tail.next = new_node
-            self.tail = new_node
-            self.counter += 1
+    # Function to test finding a data from the doubly linked list
+    def test_find(self):
+        dll = DoublyLinkedList(['A', 'B', 'C'])
+        assert dll.find(lambda item: item == 'B') == 'B'  # Match equality
+        assert dll.find(lambda item: item < 'B') == 'A'  # Match less than
+        assert dll.find(lambda item: item > 'B') == 'C'  # Match greater than
+        assert dll.find(lambda item: item == 'X') is None  # No matching item
 
-    def prepend(self, data):
-        """Insert the given item at the head of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+    # Function to test appending data in the doubly linked list
+    def test_append(self):
+        dll = DoublyLinkedList()
+        dll.append('M')
+        assert dll.head.data == 'M'
+        assert dll.tail.data == 'M'
+        dll.append('E')
+        assert dll.head.data == 'M'
+        assert dll.tail.data == 'E'
 
-        if self.isEmpty():
-            self.head = new_node
-            self.tail = new_node
-            self.counter += 1
-        else:
-            self.new_node.next = self.head
-            self.head = new_node
-            self.counter += 1
+    # Function to test prepending data in the doubly linked list
+    def test_prepend(self):
+        dll = DoublyLinkedList()
+        dll.prepend('M')
+        assert dll.head.data == 'M'
+        assert dll.tail.data == 'M'
+        dll.prepend('E')
+        assert dll.head.data == 'E'
+        assert dll.tail.data == 'M'
 
-    def delete(self, data):
-        """Delete the given item from this doubly linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
-            # checks if the list is empty
-            if self.is_empty():
-                raise ValueError("Empty List")
+    # Function to test the length of dll with a counter
+    def test_length_counter(self):
+        dll = DoublyLinkedList()
+        assert dll.length_with_counter() == 0
+        dll.append('L')
+        dll.append('K')
+        assert dll.length_with_counter() == 2
 
-            # check if item is in head
-            if self.head.data == item:
-                self.head = self.head.next
-                #checks if the head and tail point to same object(ll with one item)
-                if self.tail.data == item:
-                    self.tail = None
-                self.counter -= 1
-                return
+    # Function to test the length of dll by traversing
+    def test_length(self):
+        dll = DoublyLinkedList()
+        assert dll.length() == 0
+        dll.append('L')
+        dll.append('K')
+        assert dll.length() == 2
 
-                current_node = self.head
-                while current_node is not None:
-                    current_node.prev.next = current_node.next
-                    self.counter -= 1
+    def test_delete(self):
+        dll = DoublyLinkedList()
+        dll.append('L')
+        dll.append('K')
+        dll.append('G')
 
-                    #checks if deleted node was the tail
-                    if self.tail.data == item:
-                        #updates the tail
-                        self.tail = current_node
-                    return
-                current_node = current_node.next
-            raise ValueError('Item not found: {}'.format(item))
+        dll.delete('L')
+        assert dll.head.data == 'K'
+        assert dll.tail.data =='G'
+        assert dll.length() == 2
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+        unittest.main()
