@@ -72,63 +72,53 @@ class DoublyLinkedList(object):
         pass
 
 
-    # This function adds the data given at the end of the list
-    def insertTail(self, data):
-        new_node = Node(data)
-        new_node.next = None
-        self.tail.next = new_node
-        new_node.prev = self.tail
-        self.tail = new_node
-        self.counter += 1
-
-    # This function deletes(more like detaches) the data at the end of list
-    def deleteTail(self):
-        if self.isEmpty() == True:
-            print "The List is Empty"
-        else:
-            temp_node = self.tail
-            self.tail = self.tail.prev
-            self.tail.next = None
-            self.counter -= 1
-            return temp
-
-        # This function adds the data given at the beginning of the list
-    def insertHead(self, data):
-        new_node = Node(data)
-        if self.isEmpty() == True:
+    def append(self, data):
+        """Insert the given item at the tail of this linked list.
+        TODO: Running time: O(???) Why and under what conditions?"""
+        new_node = Node()
+        if self.isEmpty():
             self.head = new_node
+            self.tail = new_item
+            self.counter += 1
         else:
-            self.head.prev = new_node
-            new_node.next = self.head
+            self.tail.next = new_node
+            self.tail = new_node
+            self.counter += 1
+
+    def prepend(self, data):
+        """Insert the given item at the head of this linked list.
+        TODO: Running time: O(???) Why and under what conditions?"""
+
+        if self.isEmpty():
             self.head = new_node
-        self.counter += 1
+            self.tail = new_node
+            self.counter += 1
+        else:
+            self.new_node.next = self.head
+            self.head = new_node
+            self.counter += 1
 
     #This function deletes the head Node from the list
     def deleteHead(self):
-        temp_node = self.head
-        self.head = self.head.next
-        self.head.prev = None
-        if self.head == None:
-            self.tail = None
-            print "The List is Empty"
-        self.counter -= 1
-        return temp_node
+        """ Delete the head of the doubly linked list
+        TODO: Running time: O(???) Why and under what conditions?
+        """
 
-    #This function deletes a Node from the list given a data
+        if self.is_empty():
+            raise ValueError("List is empty")
+
+        current_node = self.head
+        while current_node is not None:
+            
+
+    def deleteTail(self):
+        pass
+
+
     def delete(self, data):
-        if self.isEmpty() == True:
-            print "The List is Empty"
-            return
-        else:
-            current_node = self.head
-            while(current_node.data is not data):
-                current_node = current_node.next
-            if current_node == self.head:
-                self.deleteHead()
-            elif current_node == tail:
-                self.deleteTail()
-            else:
-                current_node.prev.next = current_node.next
-                current_node.next.prev = current_node.prev
+        """Delete the given item from this linked list, or raise ValueError.
+        TODO: Best case running time: O(???) Why and under what conditions?
+        TODO: Worst case running time: O(???) Why and under what conditions?"""
+
 
         print "The data is not found in the List"
