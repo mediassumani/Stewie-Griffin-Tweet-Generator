@@ -60,28 +60,17 @@ class DoublyLinkedList(object):
 
     # This functions retruns a boolean on wheter or not the data is found in the list
     def find(self, quality):
-        pass
 
+        current_node = self.head
+        while current_node is not None:
+            if quality(current_node.data) is True:
+                return current_node.data
+            current_node = current_node.next
 
     # This function replaces a data from the list with a new one
     def replace(self, old_item, new_item):
-        if self.isEmpty is True:
-            return "The list is Empty"
-        else:
-            new_node = Node(new_item)
-            temp_node = self.head
-            if new_node.data == self.head.data:
-                self.head.data = new_item
-            else:
-                temp_node.data == self.tail.data
-                self.tail.data  = new_item
-            while(temp_node is not None):
-                temp_node = temp_node.next
-                if temp_node.data == old_item:
-                    temp_node.data = new_item
-                else:
-                    return "Data Not Found"
-                    
+        pass
+
 
     # This function adds the data given at the end of the list
     def insertTail(self, data):
