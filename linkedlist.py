@@ -128,28 +128,32 @@ class LinkedList(object):
         if self.is_empty():
             raise ValueError("Empty List")
 
+        # check if item is in head
         if self.head.data == item:
             self.head = self.head.next
+
+            #checks if the head and tail point to same object(ll with one item)
             if self.tail.data == item:
                 self.tail = None
             self.counter -= 1
             return
 
         current_node = self.head
+        # checks one node ahead
         while current_node.next is not None:
             if current_node.next.data == item:
-                target_node = current_node.next
-                connecting_node = target_node.next
-                current_node.next = connecting_node
+                target_node = current_node.next # stores the node that contains the item
+                connecting_node = target_node.next # stores the node that comes after the target node
+                current_node.next = connecting_node # connects the current node and the node after target
                 self.counter -= 1
+                #checks if deleted node was the tail
                 if self.tail.data == item:
+                    #updates the tail
                     self.tail = current_node
-
                 return
             current_node = current_node.next
 
         raise ValueError('Item not found: {}'.format(item))
-
 
 
 def test_linked_list():
