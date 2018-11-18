@@ -55,9 +55,13 @@ class HashTable(object):
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
         counter = 0
+        # iterates through the linked list of buckets
         for bucket in self.buckets:
+            # iterates through each bucket node that has the key and value
             for key,value in bucket.items():
+                # checks if the key and value aren't empty
                 if key is not None and value is not None:
+                    # increments the counter by if is not empty
                     counter += 1
         return counter
 
@@ -68,6 +72,15 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
+        target_bucket = self.buckets[self._bucket_index(key)] # Gets the index of the correct linkedList bucket
+        items = target_bucket.items() # returns all the linkedList buckets
+
+        return hash(key) in items # returns a boolean value if 
+
+
+
+
+
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
