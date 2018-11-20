@@ -3,6 +3,22 @@
 from linkedlist import LinkedList
 
 
+# Thanks to vincenzo for this external method idea
+def quality_check(key):
+    """ Return a boolean value on wheter or not the key is found"""
+    target_key = key
+
+    def check_keys(node_data):
+        """ Wrapper function that checks if the key passed matches"""
+        node_key = node_data[0] # grabs the key from the tuple node
+        return target_key == node_key
+
+    return check_keys
+
+def replace(old_item, new_item):
+    pass
+
+
 class HashTable(object):
 
     def __init__(self, init_size=8):
@@ -57,28 +73,39 @@ class HashTable(object):
         counter = 0
         # iterates through the linked list of buckets
         for bucket in self.buckets:
-            # iterates through each bucket node that has the key and value
-            for key,value in bucket.items():
-                # checks if the key and value aren't empty
-                if key is not None and value is not None:
-                    # increments the counter by if is not empty
-                    counter += 1
+            counter += bucket.length()
         return counter
+
+
+    def _find_bucket(self, key):
+        """ Returns the bucket linkedlist given the key"""
+        # gets the index of the bucket from the array of buckets
+        target_bucket_index = _bucket_index(key)
+
+        #returns the linkedList bucket that contains the key
+        return self.buckets[target_bucket_index]
+
+    def _find_node(self, key):
+        """ Returns the node where the key belongs"""
+
+        # gets the right bucket
+        target_bucket = self._find_bucket(key)
+
+        # trasversing the bucket linked list from the head
+        current_node = target_bucket.head
+        while current_node is not None:
+            if current_node.data[0] == key:
+                # returns the node if the firt element of its tuple is equal to the key
+                return current_node
+            current_node = current_node.next
 
 
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        target_bucket = self.buckets[self._bucket_index(key)] # Gets the index of the correct linkedList bucket
-        items = target_bucket.items() # returns all the linkedList buckets
-
-        return hash(key) in items # returns a boolean value if 
-
-
-
+        target_item = self._find_node(key) # returns the node that contains the key
+        return target_item is not None
 
 
 
@@ -98,6 +125,22 @@ class HashTable(object):
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
+        target_bucket = self.buckets([_bucket_index(key)])
+        node_data = target_bucket.find(quality_check(key))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.

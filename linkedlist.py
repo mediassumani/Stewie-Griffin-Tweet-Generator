@@ -154,6 +154,7 @@ class LinkedList(object):
 
         raise ValueError('Item not found: {}'.format(item))
 
+
     def replace(self, old_item, new_item):
         """Replace the given old item from this doubly linked list with the new item.
         TODO: Best case running time: O(???) Why and under what conditions?"""
