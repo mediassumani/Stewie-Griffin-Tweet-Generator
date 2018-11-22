@@ -2,29 +2,13 @@
 
 from linkedlist import LinkedList
 
-
-# Thanks to vincenzo for this external method idea
-def quality_check(key):
-    """ Return a boolean value on wheter or not the key is found"""
-    target_key = key
-
-    def check_keys(node_data):
-        """ Wrapper function that checks if the key passed matches"""
-        node_key = node_data[0] # grabs the key from the tuple node
-        return target_key == node_key
-
-    return check_keys
-
-def replace(old_item, new_item):
-    pass
-
-
 class HashTable(object):
 
     def __init__(self, init_size=8):
         """Initialize this hash table with the given initial size."""
         # Create a new list (used as fixed-size array) of empty linked lists
         self.buckets = [LinkedList() for _ in range(init_size)]
+        self.counter = 0
 
     def __str__(self):
         """Return a formatted string representation of this hash table."""
@@ -83,6 +67,12 @@ class HashTable(object):
 
         return counter
 
+    def length_with_counter(self):
+        """ Return the length of the key-value entries by keeping counter
+        TODO: Running time: O(???) Why and under what conditions?
+        """
+        return self.counter
+
 
     def _find_bucket(self, key):
         """ Returns the bucket linkedlist given the key"""
@@ -132,6 +122,7 @@ class HashTable(object):
         if target_node is None:
             # if there's nothing in the node, we add the new k,v pair
             self._find_bucket(key).append((key, value))
+            self.counter += 1
             return
 
         # if there is already a k,v pair, we overwrite it
@@ -147,6 +138,7 @@ class HashTable(object):
             raise KeyError('Key not found: {}'.format(key))
         # uses the ll's delete method to delete the node
         self._find_bucket(key).delete(target_node.data)
+        self.counter -= 1
 
 
 def test_hash_table():
