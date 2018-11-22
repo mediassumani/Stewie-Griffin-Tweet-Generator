@@ -56,9 +56,9 @@ class HashTable(object):
         # TODO: Loop through all buckets
         # TODO: Collect all values in each bucket
         all_values = []
-        for bucket in self.buckets.items():
-            for key, value in bucket:
-                all_values.append(value)
+        for item in self.items():
+            all_values.append(item[1])
+
         return all_values
 
     def items(self):
@@ -68,6 +68,7 @@ class HashTable(object):
         all_items = []
         for bucket in self.buckets:
             all_items.extend(bucket.items())
+
         return all_items
 
     def length(self):
@@ -79,13 +80,14 @@ class HashTable(object):
         # iterates through the linked list of buckets
         for bucket in self.buckets:
             counter += bucket.length()
+
         return counter
 
 
     def _find_bucket(self, key):
         """ Returns the bucket linkedlist given the key"""
         # gets the index of the bucket from the array of buckets
-        target_bucket_index = _bucket_index(key)
+        target_bucket_index = self._bucket_index(key)
 
         #returns the linkedList bucket that contains the key
         return self.buckets[target_bucket_index]
@@ -113,31 +115,28 @@ class HashTable(object):
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, return value associated with given key
-        # TODO: Otherwise, raise error to tell user get failed
-        # Hint: raise KeyError('Key not found: {}'.format(key))
+
         target_node = self._find_node(key)
-        if target_node[0] == key:
-            return target_node[1]
+        if target_node is not None:
+            return target_node.data[1]
+
         raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, update value associated with given key
-        # TODO: Otherwise, insert given key-value entry into bucket
+        target_bucket = self._find_bucket(key)
         target_node = self._find_node(key)
 
         # check if the node is empty, we update
-        if node is None:
-            target_bucket = self._find_bucket(key) # gets the right bucket
-            target_bucket.append((key,value)) # append a new element in the bucket
-        # if node is there, overwrite its previous value
+        if target_node is None:
+            # if there's nothing in the node, we add the new k,v pair
+            self._find_bucket(key).append((key, value))
+            return
+
+        # if there is already a k,v pair, we overwrite it
         target_node.data = (key,value)
+
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
