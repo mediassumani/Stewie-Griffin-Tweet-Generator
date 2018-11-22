@@ -104,15 +104,11 @@ class HashTable(object):
                 return current_node
             current_node = current_node.next
 
-
-
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?"""
         target_item = self._find_node(key) # returns the node that contains the key
         return target_item is not None
-
-
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
@@ -134,31 +130,24 @@ class HashTable(object):
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
-        target_bucket = self.buckets([_bucket_index(key)])
-        node_data = target_bucket.find(quality_check(key))
+        target_node = self._find_node(key)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        # check if the node is empty, we update
+        if node is None:
+            target_bucket = self._find_bucket(key) # gets the right bucket
+            target_bucket.append((key,value)) # append a new element in the bucket
+        # if node is there, overwrite its previous value
+        target_node.data = (key,value)
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, delete entry associated with given key
-        # TODO: Otherwise, raise error to tell user delete failed
-        # Hint: raise KeyError('Key not found: {}'.format(key))
+        target_node = self._find_node(key)
+        if target_node is None:
+            # raise error if the node is empty
+            raise KeyError('Key not found: {}'.format(key))
+        # uses the ll's delete method to delete the node
+        self._find_bucket(key).delete(target_node.data)
 
 
 def test_hash_table():

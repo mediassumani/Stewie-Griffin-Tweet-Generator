@@ -14,15 +14,15 @@ class HashTableTest(unittest.TestCase):
         assert len(ht.buckets) == 4
         assert ht.length() == 0
 
-    # def test_keys(self):
-    #     ht = HashTable()
-    #     assert ht.keys() == []
-    #     ht.set('I', 1)
-    #     assert ht.keys() == ['I']
-    #     ht.set('V', 5)
-    #     self.assertCountEqual(ht.keys(), ['I', 'V'])  # Ignore item order
-    #     ht.set('X', 10)
-    #     self.assertCountEqual(ht.keys(), ['I', 'V', 'X'])  # Ignore item order
+    def test_keys(self):
+        ht = HashTable()
+        assert ht.keys() == []
+        ht.set('I', 1)
+        assert ht.keys() == ['I']
+        ht.set('V', 5)
+        self.assertCountEqual(ht.keys(), ['I', 'V'])  # Ignore item order
+        ht.set('X', 10)
+        self.assertCountEqual(ht.keys(), ['I', 'V', 'X'])  # Ignore item order
     #
     # def test_values(self):
     #     ht = HashTable()
