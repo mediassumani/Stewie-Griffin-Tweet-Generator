@@ -9,7 +9,7 @@ from flask import Flask
 import sys
 import random
 sys.path.insert(0,'./scripts')
-from file_opener import read_file
+#from file_opener import read_file
 from histogram_generator import generate_histogram
 from sentence import generate_sentence
 

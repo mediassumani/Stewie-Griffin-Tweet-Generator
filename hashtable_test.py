@@ -104,14 +104,14 @@ class HashTableTest(unittest.TestCase):
             ht.delete('A')  # Key does not exist
 
     def test_delete_with_counter(self):
-                ht = HashTable()
-                assert ht.counter == 0
-                ht.set('I', 1)
-                ht.set('V', 5)
-                ht.set('X', 10)
-                assert ht.counter == 3
-                ht.delete('I')
-                assert ht.counter == 2
+        ht = HashTable()
+        assert ht.counter == 0
+        ht.set('I', 1)
+        ht.set('V', 5)
+        ht.set('X', 10)
+        assert ht.counter == 3
+        ht.delete('I')
+        assert ht.counter == 2
 
 if __name__ == '__main__':
     unittest.main()
