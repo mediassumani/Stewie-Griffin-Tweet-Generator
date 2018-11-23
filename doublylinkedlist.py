@@ -131,12 +131,13 @@ class DoublyLinkedList(object):
 
             current_node = self.head
             while current_node is not None:
-                current_node.prev.next = current_node.next
-                self.counter -= 1
-                #checks if deleted node was the tail
-                if self.tail.data == data:
-                    #updates the tail
-                    self.tail = current_node
-                return
-            current_node = current_node.next
+                if current_node.data == data:
+                    current_node.prev.next = current_node.next
+                    self.counter -= 1
+                    #checks if deleted node was the tail
+                    if self.tail.data == data:
+                        #updates the tail
+                        self.tail = current_node
+                    return
+                current_node = current_node.next
         raise ValueError('Item not found: {}'.format(item))

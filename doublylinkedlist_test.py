@@ -73,11 +73,13 @@ class TestDoublyLinkedList(unittest.TestCase):
         assert dll.head.data == 'K'
         assert dll.tail.data =='G'
         assert dll.length() == 2
+        print(dll)
 
+        dll.delete('K')
+        assert dll.head.data == 'G'
+        assert dll.tail.data == 'G'
 
-
-
-
+        assert dll.length() == 1
 
 
 
