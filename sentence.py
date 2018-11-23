@@ -1,4 +1,7 @@
 """ Module to create sentences"""
+
+import sys
+sys.path.insert(0,'./scripts')
 from stochatic_sample import dict_frequency_sample
 
 def generate_sentence(histogram, num_of_words):
