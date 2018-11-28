@@ -56,7 +56,8 @@ class LinkedList(object):
 
     def length(self):
         """Return the length of this linked list by traversing its nodes.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(n) Beacuse we have to traverse the entire LLself.
+        Condtion : If List is not empty"""
         # TODO: Loop through all nodes and count one for each
         counter = 0
         for item in self.items():

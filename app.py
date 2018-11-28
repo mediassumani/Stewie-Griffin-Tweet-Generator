@@ -42,9 +42,9 @@ for key,value in histogram.items():
 for key, value in markov_model.items():
     if len(value) == 0:
         break
-    elif len(value) != 0:
+    else:
+
         random_index = random.randint(0, len(value)-1)
         sentence += value[random_index]
     # there's an empty list, figure it out!!!
-
-print(sentence)
+print("\n\n Sentence generated : {}".format(sentence))
