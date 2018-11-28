@@ -108,25 +108,25 @@ class LinkedList(object):
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) Because it is constant time if the current_node is in the head
+        TODO: Worst case running time: O(n) Because it will take linear time if the current_node is in the tail
+                                        Or not in the linkedlist
+        """
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
 
-        current_node = self.head
-        while current_node is not None:
+        current_node = self.head # O(1) to assign a new node
+        while current_node is not None: # O(n) to trasverse the entire linked list
             if quality(current_node.data) == True:
-                return current_node.data
-            current_node = current_node.next
+                return current_node.data # O(1)  to return a node variable
+            current_node = current_node.next # O(1) to assign a new node
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find one whose data matches given item
-        # TODO: Update previous node to skip around node with matching data
-        # TODO: Otherwise raise error to tell user that delete has failed
-        # Hint: raise ValueError('Item not found: {}'.format(item))
+        TODO: Best case running time: O(1) Beacuse if item is in head or list is empty
+        TODO: Worst case running time: O(n) Beacuse if item is in tail then will traverse entire list
+                                        Or if item is not in list
+        """
 
         # checks if the list is empty
         if self.is_empty():
@@ -144,7 +144,7 @@ class LinkedList(object):
 
         current_node = self.head
         # checks one node ahead
-        while current_node.next is not None:
+        while current_node.next is not None:# O(n) to trasverse the entire linkedlist
             if current_node.next.data == item:
                 target_node = current_node.next # stores the node that contains the item
                 connecting_node = target_node.next # stores the node that comes after the target node
@@ -162,10 +162,18 @@ class LinkedList(object):
 
     def replace(self, old_item, new_item):
         """Replace the given old item from this doubly linked list with the new item.
-        TODO: Best case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) If new_item is in head or tail with  early return"""
+
+        # Checks if the old_item is the first or last node in the linkedlist
+        if self.head.data == old_item:
+            self.head.data = new_item
+            return
+        elif self.tail.data == old_item:
+            self.tail.data == new_item
+            return
 
         current_node = self.head
-        while current_node is not None:
+        while current_node is not None: # O(n) traversing the entire list
             if current_node.data == old_item:
                 current_node.data = new_item
                 return
