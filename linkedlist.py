@@ -59,47 +59,51 @@ class LinkedList(object):
         TODO: Running time: O(n) Beacuse we have to traverse the entire LLself.
         Condtion : If List is not empty"""
         # TODO: Loop through all nodes and count one for each
-        counter = 0
-        for item in self.items():
-            counter += 1
-        return counter
+        counter = 0 # O(1) time to assign a new variable
+        for item in self.items(): # O(n) for looping through entire list with no early return
+            counter += 1 # O(1) for addition operation
+        return counter # O(1) for returning the variable
 
     def length_with_counter(self):
         """Return the length of this linked list by returning the counter property.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        return self.counter
+        TODO: Running time: O(1) Because we are just returning a variable"""
+        return self.counter # 0(1) for returning the counter
 
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(1) Because assigning we are just assigning variables and it takes constant time
+              Condition: Will be O(1) regardless of the state of the head and tail
+        """
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
-        new_node = Node(item)
+        new_node = Node(item) # O(1) to assign a new node
         if self.is_empty():
-            self.head = new_node
-            self.tail = new_node
-            self.counter += 1
+            self.head = new_node # O(1) to assign a new node
+            self.tail = new_node # O(1) to assign a new node
+            self.counter += 1 # O(1) for the addition operation
         else:
-            self.tail.next = new_node
-            self.tail = new_node
-            self.counter += 1
+            self.tail.next = new_node # O(1) to assign a new node
+            self.tail = new_node # O(1) to assign a new node
+            self.counter += 1 # O(1) for the addition operation
 
     def prepend(self, item):
-        """Insert the given item at the head of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        """Insert the given item at the tail of this linked list.
+        TODO: Running time: O(1) Because assigning we are just assigning variables and it takes constant time
+              Condition: Will be O(1) regardless of the state of the head and tail
+        """
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
 
-        new_node = Node(item)
+        new_node = Node(item) # O(1) to assign a new node
         if self.is_empty():
-            self.head = new_node
-            self.tail = new_node
-            self.counter += 1
+            self.head = new_node # O(1) to assign a new node
+            self.tail = new_node # O(1) to assign a new node
+            self.counter += 1 # O(1) for the addition operation
         else:
-            new_node.next = self.head
-            self.head = new_node
-            self.counter += 1
+            new_node.next = self.head # O(1) to assign a new node
+            self.head = new_node # O(1) to assign a new node
+            self.counter += 1 # O(1) for the addition operation
 
 
     def find(self, quality):
