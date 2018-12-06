@@ -54,7 +54,7 @@ for key,value in markov_model.items():
         random_choice = value[random_index]
         sentence += random_choice
         for innerKey,innerValue in markov_model.items():
-            if innerKey == random_choice:
+            if innerKey == random_choice and innerKey != "STOP":
                 rand_index = randint(0, len(innerValue)-1)
                 sentence += " {} ".format(innerValue[rand_index])
                 break
