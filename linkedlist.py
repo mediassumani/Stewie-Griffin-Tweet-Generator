@@ -108,7 +108,7 @@ class LinkedList(object):
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(1) Because it is constant time if the current_node is in the head
+        TODO: Best case running time: O(1) Because it is constant time if the current_node head or near hed
         TODO: Worst case running time: O(n) Because it will take linear time if the current_node is in the tail
                                         Or not in the linkedlist
         """

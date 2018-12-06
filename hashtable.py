@@ -105,13 +105,19 @@ class HashTable(object):
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
-        TODO: Running time: O(1) Because we are only returning a variable"""
+        TODO: Running time: O(n) Because we are only returning a variable
+        Worst Case : O(l) function _find_node loops through all node
+        Best Case : O(1) if key is in head of bucket
+        """
         target_item = self._find_node(key) # returns the node that contains the key
-        return target_item is not None # O(n) to return a boolean evaluation
+        return target_item is not None # O(l) to return a boolean evaluation
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(n) Because just returning a variable
+        Worst Case : O(n) since _find_node function loops throup all nodes
+        Worst Case : O(1) if key is in head of bucket
+        """
 
         target_node = self._find_node(key)
         if target_node is not None:
@@ -120,10 +126,11 @@ class HashTable(object):
         raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
+
         """Insert or update the given key with its associated value.
-        TODO: Running time: O(1) Because we are getting right into the correct node of the linkedList"""
-        """Insert or update the given key with its associated value.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(???) Why and under what conditions?
+        Best Case
+        """
         target_bucket = self._find_bucket(key)
         target_node = self._find_node(key)
 
