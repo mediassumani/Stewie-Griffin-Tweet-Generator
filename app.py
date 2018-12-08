@@ -12,15 +12,15 @@ from file_opener import read_file
 from histogram_generator import generate_histogram
 from sentence import generate_sentence
 from stochatic_sample import dict_frequency_sample
+from markov import Markov
 
 app = Flask(__name__)
 
 # Route : Index
 @app.route('/')
 def index():
-    # file_path = 'stewi_griffin_scripts.txt'
-    # text = read_file(file_path)
-    # histogram = generate_histogram(text)
-    #
-    # return generate_sentence(histogram, 10)
-    return "I am amazing!"
+
+    text_list = read_file("stewi_griffin_scripts.txt")
+    markov_model = Markov(text_list)
+
+    return markov_model.generate_sentence(200)

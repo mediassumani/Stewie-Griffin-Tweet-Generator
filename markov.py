@@ -33,10 +33,13 @@ class Markov(dict):
             markov_model[key] = temp_value
         return markov_model
 
-    def generate_sentence(self, num_words=10):
+    def generate_sentence(self, num_of_characters):
 
         model = self._create_model()
+
         for key,value in model.items():
+
+            #print(len(self.sentence))
             current_state = key
             if len(self.sentence) == 0:
                 self.sentence = "{}".format(current_state)
@@ -44,6 +47,9 @@ class Markov(dict):
             if len(value) == 0:
                 self.sentence += key
                 break
+
+            if len(self.sentence) >= num_of_characters:
+                return self.sentence
 
             for innerKey,innerValue in model.items():
                 if innerKey == current_state and len(innerValue) != 0:
