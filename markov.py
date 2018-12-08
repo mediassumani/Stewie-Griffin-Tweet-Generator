@@ -2,6 +2,7 @@ from random import choice
 from dictogram import Dictogram
 from stochatic_sample import dict_frequency_sample
 from file_opener import read_file
+from histogram_generator import generate_histogram
 
 
 class Markov(dict):
@@ -9,34 +10,48 @@ class Markov(dict):
     def __init__(self, word_list):
         super(Markov, self).__init__()
         self.order = 1
-        self._create(words)
+        self.words = word_list
+        self.sentence = ""
 
-    def _create(self, words):
+    def _create_histogram(self):
+        return generate_histogram(self.words)
 
-        words = tuple(words)
-        for i in range(len(words) - self.order):
-            current = words[i:i+self.order]
-            next = words[i + self.order]
+    def _create_model(self):
 
-            if current not in self:
-                self[current] = Dictogram()
-            self[current].add_count(next)
+        histogram = self._create_histogram()
+        markov_model = {}
 
-    def random_walk(self, num_words=10):
+        for key, value in histogram.items():
+            temp_value = {}
+            if key not in markov_model:
+                temp_key = key
+                for i in range(0, len(self.words)-1):
+                    temp_word = self.words[i]
+                    if temp_word == temp_key:
+                        next_word = self.words[i + 1]
+                        temp_value[next_word] = histogram.frequency(next_word)
+            markov_model[key] = temp_value
+        return markov_model
 
-        words = [*choice(list(self.keys()))]
-        for _ in range(num_words - self.order):
-            previous = tuple(words[-self.order:])
-            words.append(self[previous].sample())
+    def generate_sentence(self, num_words=10):
 
-        return ' '.join(words)
+        model = self._create_model()
+        for key,value in model.items():
+            current_state = key
+            if len(self.sentence) == 0:
+                self.sentence = "{}".format(current_state)
 
+            if len(value) == 0:
+                self.sentence += key
+                break
 
-def main():
+            for innerKey,innerValue in model.items():
+                if innerKey == current_state and len(innerValue) != 0:
+                    nested_word = dict_frequency_sample(innerValue)
+                    self.sentence += " {} ".format(nested_word)
 
-    text_list = read_file("dummy.txt")
-    chain = Markov(text_list)
-    sentence = chain.random_walk()
+                elif len(innerValue) == 0:
+                    pass
+                current_state = nested_word
 
-if __name__ == '__main__':
-    main()
+        return self.sentence
