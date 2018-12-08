@@ -9,7 +9,6 @@ class Markov(dict):
 
     def __init__(self, word_list):
         super(Markov, self).__init__()
-        self.order = 1
         self.words = word_list
         self.sentence = ""
 

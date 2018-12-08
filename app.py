@@ -1,7 +1,7 @@
 """
 FILENAME:               app.py
 AUTHOR:                 Medi Assumani
-DESCRIPTION:            Entry point of the Stswie Griffin Tweet Generator that containts
+DESCRIPTION:            Entry point of the Stewie Griffin Tweet Generator that containts
                         the flask server and connected with needed internal modules.
 """
 
@@ -20,7 +20,11 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 
-    text_list = read_file("stewi_griffin_scripts.txt")
-    markov_model = Markov(text_list)
+    # text_list = read_file("stewi_griffin_scripts.txt")
+    # markov_model = Markov(text_list)
 
-    return markov_model.generate_sentence(200)
+    return "markov_model.generate_sentence(10)"
+
+text_list = read_file("stewi_griffin_scripts.txt")
+markov_model = Markov(text_list)
+print(markov_model._create_model())
