@@ -1,6 +1,4 @@
 """ Module for generation an histogram"""
-import sys
-sys.path.insert(0,'./scripts')
 from dictogram import Dictogram
 
 def generate_histogram(body_text):
