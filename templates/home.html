@@ -3,12 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Stewie Griffin Tweet Generator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css')}}">
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <meta charset="utf-8">
+    <meta name="description" content="A Website to get tweets from stewie griffin"/>
+    <meta name="keywords" content="family guy, stewie"/>
+    <meta name="author" content="Medi Assumani"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Stwie Griffin Tweet Generator</title>
   </head>
+
   <body>
       <div class="content">
         <div class="sup">
-          <img src="./static/assets/spongebob.png" alt="spongebob">
+          <img src="./static/assets/stewie.png" width="500" height="500">
           <p class="tweet">{{sentence}}</p>
         </div>
       </div>
