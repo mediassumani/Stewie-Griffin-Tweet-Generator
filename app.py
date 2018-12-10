@@ -16,7 +16,6 @@ from markov import Markov
 
 app = Flask(__name__)
 
-# Route : Index
 @app.route('/')
 def index():
 
