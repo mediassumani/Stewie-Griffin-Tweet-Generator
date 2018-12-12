@@ -17,7 +17,5 @@ app = Flask(__name__)
 def index():
 
     text_list = read_file("stewi_griffin_scripts.txt")
-    clean_text = clean(text_list)
-    print(clean_text)
     markov_model = Markov(text_list)
-    return  render_template("home.html", sentence= markov_model.random_walk(30))
+    return  render_template("home.html", sentence= markov_model.random_walk(20))
