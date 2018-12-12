@@ -2,6 +2,9 @@ import re
 import string
 
 def clean_up(text_body):
+    """ Cleans up the text and lower cases every word
+        @param - text_body - the string that needs to be cleaned
+    """
 
     split_texts = text_body.split()
     clean_up_data = [word.lower().translate(None, string.punctuation) for word in split_texts]
@@ -13,7 +16,6 @@ def read_file(file_path):
        @param - file_name : the soure file to read from
        @return - file_content : The body of the text file
     """
-    expression = re.compile(r'\w+')
 
     try:
         with open(file_path, 'r') as file:

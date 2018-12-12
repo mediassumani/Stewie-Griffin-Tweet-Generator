@@ -9,14 +9,21 @@
     <meta name="keywords" content="family guy, stewie"/>
     <meta name="author" content="Medi Assumani"/>
     <title>Stwie Griffin Tweet Generator</title>
+    <script>
+function refreshPage(){
+    window.location.reload();
+}
+</script>
   </head>
 
   <body>
       <h1>Stewie Griffin Tweet Generator</h1>
+      </br>
       <div class="content">
         <div class="sup">
           <img src="./static/assets/stewie.png" width="500" height="500">
           <h3 class="tweet">{{sentence}}</h3>
+          <button type="submit"  onClick="refreshPage()">Get new Tweet</button>
         </div>
       </div>
   </body>
