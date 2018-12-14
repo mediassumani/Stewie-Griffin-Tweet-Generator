@@ -9,7 +9,6 @@ from flask import Flask, render_template
 from file_opener import read_file
 from stochatic_sample import dict_frequency_sample
 from markov import Markov
-from clean_up import clean
 
 app = Flask(__name__)
 
